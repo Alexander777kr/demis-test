@@ -1,31 +1,26 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "./Form.module.css";
+import { connect } from "react-redux";
 
 function FormPage(props) {
-
-    const onContactFormSubmit = (formData) => {
-        console.log(formData);
-    }
-
-
   return (
     <div>
-      <ReduxContactForm onSubmit = {onContactFormSubmit}/> 
+      <ContactForm onSubmit={(values) => props.handleInputSubmit(values)} />
     </div>
   );
 }
 
-const ContactForm = (props) => {
+let ContactForm = (props) => {
   return (
-    <form onSubmit = {props.handleSubmit} className={styles.contactForm}>
+    <form onSubmit={props.handleSubmit} className={styles.contactForm}>
       <div className={styles.inputs}>
         <div>
           <span>Ф. И. О.</span>
           <Field
             component="input"
             type="text"
-            name = "fullName"
+            name="fullName"
             placeholder="Иванов Иван Иванович"
             autoFocus
           />
@@ -35,7 +30,7 @@ const ContactForm = (props) => {
           <Field
             component="input"
             type="text"
-            name = "address"
+            name="address"
             placeholder="Страна, город, улица"
           />
         </div>
@@ -44,7 +39,7 @@ const ContactForm = (props) => {
           <Field
             component="input"
             type="tel"
-            name = "phone"
+            name="phone"
             placeholder="+7 (999) 999-99-99"
           />
         </div>
@@ -53,7 +48,7 @@ const ContactForm = (props) => {
           <Field
             component="input"
             type="email"
-            name = "email"
+            name="email"
             placeholder="example@gmail.com"
           />
         </div>
@@ -61,14 +56,21 @@ const ContactForm = (props) => {
 
       <div className={styles.formBtns}>
         <button className={`${styles.btn} ${styles.sendBtn}`}>Отправить</button>
-        <button className={`${styles.btn} ${styles.cancelBtn}`}>Очистить</button>
+        <button className={`${styles.btn} ${styles.cancelBtn}`} type="reset">
+          Очистить
+        </button>
       </div>
     </form>
   );
 };
 
-const ReduxContactForm = reduxForm({
+ContactForm = reduxForm({
   form: "contact",
 })(ContactForm);
 
-export default FormPage;
+const mapDispatchToProps = (dispatch) => ({
+  handleInputSubmit: (value) =>
+    dispatch({ type: "INPUT_SUBMIT", payload: value }),
+});
+
+export default connect(null, mapDispatchToProps)(FormPage);

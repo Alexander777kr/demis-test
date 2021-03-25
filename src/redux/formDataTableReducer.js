@@ -1,20 +1,27 @@
-const NEW_USER_DATA = 'NEW_USER_DATA';
+const NEW_USER_DATA = "NEW_USER_DATA";
 
 let initialState = {
-    defaultUserData: [{
-        fullName: 'Name',
-        address: 'Address',
-        phone: '+7 777 777 77 77',
-        email: 'something@mail.com'
-    }]
-}
+  fullName: "Не задано",
+  address: "Не задано",
+  phone: "Не задано",
+  email: "Не задано",
+};
 
 export const formDataTableReducer = (state = initialState, action) => {
-    return state;
-}
-
-
+  switch (action.type) {
+    case "INPUT_SUBMIT":
+      return {
+        ...state,
+        fullName: action.payload.fullName ? action.payload.fullName : "-",
+        address: action.payload.address ? action.payload.address : "-",
+        phone: action.payload.phone ? action.payload.phone : "-",
+        email: action.payload.email ? action.payload.email : "-",
+      };
+    default:
+      return state;
+  }
+};
 
 export const addUserData = () => ({
-    type: NEW_USER_DATA,
-})
+  type: NEW_USER_DATA,
+});
