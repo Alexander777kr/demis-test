@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "./Form.module.css";
+import FormDataTable from "./FormDataTable";
 
 function FormPage(props) {
 
@@ -12,6 +13,7 @@ function FormPage(props) {
   return (
     <div>
       <ReduxContactForm onSubmit = {onContactFormSubmit}/> 
+      <FormDataTable />
     </div>
   );
 }

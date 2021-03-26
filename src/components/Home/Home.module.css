@@ -1,0 +1,18 @@
+.previewBlock {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000000;
+}
+
+.previewBlock div {
+    display: flex;
+}
+.previewBlock img {
+    width: 200px;
+}
+
+.description {
+    margin-left: 1%;
+}

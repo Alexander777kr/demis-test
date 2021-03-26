@@ -4,3 +4,12 @@
     margin-bottom: 5%;
     background-color: #585858;
 }
+
+.mainMenu a {
+    display: inline-block;
+    margin: 10px;
+    color: #88001b;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
