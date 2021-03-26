@@ -3,10 +3,13 @@ import { Field, reduxForm } from "redux-form";
 import styles from "./Form.module.css";
 import { connect } from "react-redux";
 
+
 function FormPage(props) {
   return (
     <div>
+
       <ContactForm onSubmit={(values) => props.handleInputSubmit(values)} />
+
     </div>
   );
 }

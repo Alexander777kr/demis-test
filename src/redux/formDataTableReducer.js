@@ -7,6 +7,7 @@ let initialState = {
   email: "Не задано",
 };
 
+
 export const formDataTableReducer = (state = initialState, action) => {
   switch (action.type) {
     case "INPUT_SUBMIT":
@@ -22,6 +23,8 @@ export const formDataTableReducer = (state = initialState, action) => {
   }
 };
 
+
 export const addUserData = () => ({
   type: NEW_USER_DATA,
 });
+
